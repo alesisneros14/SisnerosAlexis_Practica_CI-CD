@@ -13,7 +13,7 @@ spec:
         app: mi-app-flask
     spec:
       imagePullSecrets:
-      - name: ghcr-secret
+      - name: ghcr-secretgit
       automountServiceAccountToken: false
       containers:
       - name: mi-app-flask
