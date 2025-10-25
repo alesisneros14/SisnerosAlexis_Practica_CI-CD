@@ -1,8 +1,5 @@
-# Versiones actualizadas para corregir vulnerabilidades de Snyk
 Flask==2.2.5
 Werkzeug==2.3.8
-
-# Dependencias de desarrollo
 pytest==7.2.0
 pytest-cov==4.0.0
 flake8==5.0.4
