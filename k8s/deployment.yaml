@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: mi-app-flask
-        image: ghcr.io/alesisneros14/Practica_CI-CD:latest # ¡IMPORTANTE! Cambia TU_USUARIO
+        image: ghcr.io/alesisneros14/sisnerosalexis_practica_ci-cd:latest
         ports:
         - containerPort: 5000
