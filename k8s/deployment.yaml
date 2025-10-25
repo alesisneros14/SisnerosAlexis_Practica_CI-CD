@@ -12,6 +12,8 @@ spec:
       labels:
         app: mi-app-flask
     spec:
+      imagePullSecrets:
+      - name: ghcr-secret
       automountServiceAccountToken: false
       containers:
       - name: mi-app-flask
@@ -20,8 +22,8 @@ spec:
         - containerPort: 5000
         resources:
           limits:
-            memory: "128Mi" # Límite máximo de memoria RAM
-            cpu: "500m"      # Límite máximo de CPU (medio core)
+            memory: "128Mi"
+            cpu: "500m"
           requests:
-            memory: "64Mi"  # Memoria RAM que solicita al arrancar
-            cpu: "250m"       # CPU que solicita al arrancar
+            memory: "64Mi"
+            cpu: "250m"

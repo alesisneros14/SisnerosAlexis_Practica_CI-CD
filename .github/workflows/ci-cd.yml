@@ -1,0 +1,78 @@
+name: CI/CD Pipeline para Aplicacion Flask
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build-and-test:
+    name: Construccion, Pruebas y Analisis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del codigo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Linting con Flake8
+        run: |
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+      - name: Pruebas y Cobertura
+        run: |
+          pytest --cov=./ --cov-report=xml
+
+      - name: Analisis de Codigo con SonarCloud
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Analisis de Vulnerabilidades con Snyk
+        uses: snyk/actions/python-3.9@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: test
+          args: --file=requirements.txt
+
+  build-and-push-docker:
+    name: Construir y Publicar Artefacto
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' # Solo se ejecuta en la rama main
+    needs: build-and-test
+    steps:
+      - name: Checkout del codigo
+        uses: actions/checkout@v3
+
+      - name: Login a GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Construir y Publicar la imagen Docker
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/practica-devops-cicd:latest
