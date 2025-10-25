@@ -71,8 +71,10 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Construir y Publicar la imagen Docker
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5 # Es buena práctica usar una versión más reciente
         with:
-          context: .
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/practica-devops-cicd:latest
+              context: .
+              push: true
+              tags: |
+                  ghcr.io/${{ github.repository_owner }}/sisnerosalexis_practica_ci-cd:latest
+                  ghcr.io/${{ github.repository_owner }}/sisnerosalexis_practica_ci-cd:${{ github.sha }}
