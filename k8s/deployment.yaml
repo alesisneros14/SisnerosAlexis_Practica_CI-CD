@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-app-flask
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mi-app-flask
+  template:
+    metadata:
+      labels:
+        app: mi-app-flask
+    spec:
+      containers:
+      - name: mi-app-flask
+        image: ghcr.io/alesisneros14/Practica_CI-CD:latest # ¡IMPORTANTE! Cambia TU_USUARIO
+        ports:
+        - containerPort: 5000
