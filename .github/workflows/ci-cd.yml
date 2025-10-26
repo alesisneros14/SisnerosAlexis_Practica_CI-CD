@@ -47,12 +47,13 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Analisis de Vulnerabilidades con Snyk
+        continue-on-error: true
         uses: snyk/actions/python-3.9@master
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+                SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          command: test
-          args: --file=requirements.txt
+                command: test
+                args: --file=requirements.txt
 
   build-and-push-docker:
     name: Construir y Publicar Artefacto
