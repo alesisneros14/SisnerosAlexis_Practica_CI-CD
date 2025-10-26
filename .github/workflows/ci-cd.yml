@@ -59,6 +59,7 @@ jobs:
     name: Construir y Publicar Artefacto
     runs-on: ubuntu-latest
     needs: build-and-test
+    if: success()
     steps:
       - name: Checkout del codigo
         uses: actions/checkout@v3
