@@ -58,7 +58,7 @@ jobs:
   build-and-push-docker:
     name: Construir y Publicar Artefacto
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' # Solo se ejecuta en la rama main
+    # La condición 'if' ha sido eliminada
     needs: build-and-test
     steps:
       - name: Checkout del codigo
