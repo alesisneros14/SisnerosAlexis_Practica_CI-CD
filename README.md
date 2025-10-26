@@ -138,7 +138,7 @@ A continuación se presentan los enlaces y evidencias correspondientes a cada un
 **2. Repositorio de Artefactos (GitHub Packages):**
 - **Enlace:** [Ver Paquete de Contenedor en GitHub Packages](https://github.com/alesisneros14/SisnerosAlexis_Practica_CI-CD/pkgs/container/sisnerosalexis_practica_ci-cd)
 - **Screenshot:**
-  ![Artefacto en GitHub Packages](./img/imagen-artefacto-GitHub.png)
+  ![Artefacto en GitHub Packages](./img/imagen-artefacto-github.png)
 
 **3. Fichero de Configuración del Pipeline:**
 - [`.github/workflows/ci-cd.yml`](https://github.com/alesisneros14/SisnerosAlexis_Practica_CI-CD/blob/main/.github/workflows/ci-cd.yml)
