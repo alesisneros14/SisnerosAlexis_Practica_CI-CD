@@ -17,7 +17,7 @@ spec:
       automountServiceAccountToken: false
       containers:
       - name: mi-app-flask
-        image: ghcr.io/alesisneros14/sisnerosalexis_practica_ci-cd:latest
+        image: ghcr.io/alesisneros14/sisnerosalexis_practica_ci-cd:b9c4298210de4f02e8ccf083c0070700f599c64c
         ports:
         - containerPort: 5000
         resources:
