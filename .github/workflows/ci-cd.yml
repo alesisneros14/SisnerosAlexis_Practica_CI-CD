@@ -58,7 +58,6 @@ jobs:
   build-and-push-docker:
     name: Construir y Publicar Artefacto
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     needs: build-and-test
     steps:
       - name: Checkout del codigo
@@ -72,7 +71,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Construir y Publicar la imagen Docker
-        uses: docker/build-push-action@v5 # Es buena práctica usar una versión más reciente
+        uses: docker/build-push-action@v5
         with:
               context: .
               push: true
