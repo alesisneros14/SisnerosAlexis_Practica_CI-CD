@@ -58,7 +58,6 @@ jobs:
   build-and-push-docker:
     name: Construir y Publicar Artefacto
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     needs: build-and-test
     steps:
       - name: Checkout del codigo
