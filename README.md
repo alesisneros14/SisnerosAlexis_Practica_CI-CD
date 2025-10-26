@@ -166,7 +166,7 @@ A continuación se presentan los enlaces y evidencias correspondientes a cada un
 ![Proyecto en Snyk](./img/snyk.png)
 
 **10. Vídeo Explicativo en Drive:**
-- **Enlace:** `url de video`
+- **Enlace:** `https://drive.google.com/file/d/15HuUFeE6OVBWW4zyBVJSy7rk5yGg4FmS/view?usp=sharing`
 
 ---
 *Este proyecto fue creado como parte de la práctica de CI/CD.*
